@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cifra de César Dev</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="app-card">
+        <header class="card-header">
+          <div>
+            <p class="eyebrow">Aplicação</p>
+            <h1>Cifra de César</h1>
+          </div>
+        </header>
+
+        <div class="card-body">
+          <div class="form-grid">
+            <label class="field">
+              <span>Digite o texto que deseja codificar ou decodificar</span>
+              <textarea
+                id="inputText"
+                placeholder="Escreva aqui..."
+                rows="6"
+              ></textarea>
+            </label>
+
+            <label class="field">
+              <span>Digite o valor do deslocamento</span>
+              <input id="shiftValue" type="number" min="0" max="25" value="2" />
+            </label>
+          </div>
+
+          <fieldset class="mode-fieldset">
+            <legend>Modo</legend>
+            <label class="radio-label">
+              <input type="radio" name="mode" value="encode" checked />
+              Codificar
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="mode" value="decode" />
+              Decodificar
+            </label>
+          </fieldset>
+
+          <div class="result-card">
+            <div class="result-header">
+              <span>Resultado</span>
+              <button id="copyButton" type="button">Copiar</button>
+            </div>
+            <div id="outputText" class="result-text">Octekq</div>
+          </div>
+        </div>
+
+        <footer class="card-footer">
+          <button id="resetButton" type="button" class="ghost-button">
+            Redefinir
+          </button>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
