@@ -1,4 +1,4 @@
-// Referências aos elementos HTML usados no script
+// Referências aos elementos HTML
 const inputText = document.getElementById("inputText");
 const outputText = document.getElementById("outputText");
 const shiftValue = document.getElementById("shiftValue");
@@ -11,7 +11,7 @@ const alphabets = {
   latin: "abcdefghijklmnopqrstuvwxyz",
 };
 
-// Obtém o modo selecionado: "encode" ou "decode"
+// Obtém o modo selecionado: codificar e decodificar
 function getSelectedMode() {
   return document.querySelector('input[name="mode"]:checked').value;
 }
@@ -22,7 +22,7 @@ function normalizeValue(value) {
   return Number.isNaN(number) ? 0 : number;
 }
 
-// Aplica a Cifra de César no texto informado
+// Aplicar a cifra de Cesar no texto informado
 function transformText(text, shift, mode) {
   const alphabet = alphabets.latin;
   const maxIndex = alphabet.length;
@@ -40,28 +40,27 @@ function transformText(text, shift, mode) {
         return char;
       }
 
-      // Calcula a nova posição dentro do alfabeto
+      // Calcular a nova posição dentro do alfabeto
       const newIndex = (idx + direction * offset + maxIndex) % maxIndex;
       const transformed = alphabet[newIndex];
 
-      // Preserva maiúsculas e minúsculas
-      return char === lower ? transformed : transformed.toUpperCase();
+      // Preserva maiúscula e minúscula
+      return char === lower ? transformed : transformed.toLocaleUpperCase();
     })
     .join("");
 }
 
-// Atualiza o texto de resultado com base na entrada atual
+// Atualizar o texto de resultado com base na entrada atual
 function updateResult() {
   const text = inputText.value;
   const shift = normalizeValue(shiftValue.value);
   const mode = getSelectedMode();
 
   outputText.textContent =
-    transformText(text, shift, mode) ||
-    "Digite um texto para ver o resultado aqui.";
+    transformText(text, shift, mode) || "Digite um texto para ver o resultado.";
 }
 
-// Copia o resultado para a área de transferência
+// Função para copiar o resultado para a área de transferência
 function copyResult() {
   const result = outputText.textContent;
   if (!result) return;
@@ -82,7 +81,7 @@ function copyResult() {
     });
 }
 
-// Redefine o formulário para o estado inicial
+// Redefinir o formulário para o estado inicial
 function resetForm() {
   inputText.value = "";
   shiftValue.value = "2";
